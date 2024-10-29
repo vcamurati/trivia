@@ -10,14 +10,17 @@
     <div class="container">
         <h1>Trivia App</h1>
         
-        <div class="menu">
-            <button id="option1" onclick="getRandomQuestion()">Opción 1: Mostrar pregunta</button>
-            <button id="option2" onclick="getRandomQuestion()">Opción 2: Mostrar pregunta</button>
+        <!-- Botón para iniciar el juego -->
+        <button id="start-button" onclick="startGame()">Iniciar Juego</button>
+
+        <!-- Contenedor para mostrar preguntas y opciones -->
+        <div id="question-container" class="question-container" style="display: none;">
+            <p id="question-text">Pregunta</p>
+            <div id="options-container" class="options-container"></div>
         </div>
 
-        <div id="question-container" class="question-container">
-            <p id="question-text">Presiona un botón para ver una pregunta aleatoria</p>
-        </div>
+        <!-- Contenedor para mostrar el resultado final -->
+        <p id="result-container" class="result-container" style="display: none;"></p>
     </div>
 
     <script src="script.js"></script>
