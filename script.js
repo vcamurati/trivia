@@ -77,7 +77,15 @@ function checkAnswer(selectedOption) {
 
 function endGame() {
     document.getElementById("question-container").style.display = "none";
+    
     const resultContainer = document.getElementById("result-container");
     resultContainer.style.display = "block";
-    resultContainer.textContent = `¡Juego terminado! Tu puntaje es ${score} de ${selectedQuestions.length}`;
+    resultContainer.innerHTML = `
+        <p>¡Juego terminado! Tu puntaje es ${score} de ${selectedQuestions.length}</p>
+        <button onclick="reloadGame()">Jugar de Nuevo</button>
+    `;
+}
+
+function reloadGame() {
+    location.reload();
 }
