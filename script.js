@@ -26,31 +26,58 @@ const questions = [
     },
 ];
 
-function getRandomQuestion() {
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    const randomQuestion = questions[randomIndex];
+let selectedQuestions = [];
+let currentQuestionIndex = 0;
+let score = 0;
 
-    document.getElementById("question-text").textContent = randomQuestion.question;
+function startGame() {
+    selectedQuestions = getRandomQuestions(5);
+    currentQuestionIndex = 0;
+    score = 0;
+    document.getElementById("start-button").style.display = "none";
+    document.getElementById("question-container").style.display = "block";
+    showQuestion();
+}
+
+function getRandomQuestions(num) {
+    const shuffled = [...questions].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+}
+
+function showQuestion() {
+    const currentQuestion = selectedQuestions[currentQuestionIndex];
+    document.getElementById("question-text").textContent = currentQuestion.question;
 
     const optionsContainer = document.getElementById("options-container");
     optionsContainer.innerHTML = "";
 
-    randomQuestion.options.forEach(option => {
+    currentQuestion.options.forEach(option => {
         const button = document.createElement("button");
         button.textContent = option;
         button.classList.add("option-button");
-        button.onclick = () => checkAnswer(option, randomQuestion.correct);
+        button.onclick = () => checkAnswer(option);
         optionsContainer.appendChild(button);
     });
 }
 
-function checkAnswer(selectedOption, correctAnswer) {
-    const resultContainer = document.getElementById("result-container");
-    if (selectedOption === correctAnswer) {
-        resultContainer.textContent = "¡Correcto!";
-        resultContainer.style.color = "green";
-    } else {
-        resultContainer.textContent = "Incorrecto. La respuesta correcta es: " + correctAnswer;
-        resultContainer.style.color = "red";
+function checkAnswer(selectedOption) {
+    const currentQuestion = selectedQuestions[currentQuestionIndex];
+    if (selectedOption === currentQuestion.correct) {
+        score++;
     }
+
+    currentQuestionIndex++;
+    
+    if (currentQuestionIndex < selectedQuestions.length) {
+        showQuestion();
+    } else {
+        endGame();
+    }
+}
+
+function endGame() {
+    document.getElementById("question-container").style.display = "none";
+    const resultContainer = document.getElementById("result-container");
+    resultContainer.style.display = "block";
+    resultContainer.textContent = `¡Juego terminado! Tu puntaje es ${score} de ${selectedQuestions.length}`;
 }
