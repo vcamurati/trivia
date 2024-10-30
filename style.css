@@ -53,19 +53,19 @@ h1 {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.option {
+.option-button {
     display: block;
     margin: 8px 0;
     padding: 10px;
     text-align: left;
-    color: #f3f3f3;
+    color: #661020;
     background: none;
     border: none;
     font-size: 16px;
     cursor: pointer;
 }
 
-.option:hover {
+.option-button:hover {
     background-color: rgba(255, 0, 0, 0.1);
     border-radius: 4px;
 }
