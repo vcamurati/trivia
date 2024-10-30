@@ -1,10 +1,9 @@
 body {
     font-family: "Montserrat", sans-serif";
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    justify-content: center;
+    min-height: 100vh;
     background-color: #f3f3f3;
 }
 
@@ -37,7 +36,7 @@ h1 {
     background-color: #45a049;
 }
 
-.question-container {
+/*.question-container {
     width: 80%;
     max-width: 600px;
     margin: 20px auto;
@@ -46,9 +45,24 @@ h1 {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
+}*/
 
 #question-text {
     font-size: 18px;
     color: #333;
+}
+
+#question-container, #result-container {
+    width: 80%; /* Ajusta el tamaño al 80% del ancho de la pantalla */
+    max-width: 600px; /* Establece un ancho máximo */
+    margin: 20px auto; /* Céntralo horizontalmente y añade un margen arriba/abajo */
+    padding: 20px;
+    background-color: #f9f9f9; /* Color de fondo suave */
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+#result-container {
+    display: none; /* Oculto al inicio */
 }
